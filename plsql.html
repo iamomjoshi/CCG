@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PL/SQL resources</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>/* Reset default margin and padding */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        /* Body styles */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #1a1a1a;
+            color: #fff;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        
+        /* Navigation styles */
+        .navigation {
+            width: 250px;
+            background-color: #282828;
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            overflow-y: auto;
+            padding-top: 60px;
+        }
+        
+        .navigation ul {
+            list-style: none;
+            padding-left: 20px;
+        }
+        
+        .navigation ul li {
+            margin-bottom: 10px;
+        }
+        
+        .navigation ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1em;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        
+        .navigation ul li a:hover {
+            background-color: #333;
+        }
+        
+        /* Main content styles */
+        .main-content {
+            margin-left: 250px;
+            padding: 20px;
+        }
+        
+        .main-content h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        
+        .main-content p {
+            font-size: 1.1em;
+            margin-bottom: 20px;
+        }
+        
+        /* Footer styles */
+        .footer {
+            background-color: #282828;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+        </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navigation">
+        <ul>
+            <li><a href="#prac1">Practical 1</a></li>
+            <li><a href="#prac2">Practical 2</a></li>
+            <li><a href="#prac3">Practical 3</a></li>
+            <li><a href="#prac8">Practical 8</a></li>
+            <li><a href="#prac9">Practical 9</a></li>
+            <li><a href="#prac10">practical 10</a></li>
+            <!-- Add more sections as needed -->
+        </ul>
+    </nav>
+
+    <!-- Main content -->
+    <main class="main-content">
+        <section id="prac1">
+            <h2>Basic PL/SQL</h2>
+            <p><pre>
+                1.1 Write a PL/SQL code block to display 'Good Morning!'
+
+                SETSERVEROUTPUT ON
+                BEGIN
+                    DBMS_OUPUT.PUT_LINE('Good Morning!');
+                END;
+                
+                1.2 Write a PL/SQL code block to demonstrate computation of square & cube of accepted number
+                
+                DECLARE 
+                    NUM NUMBER;
+                    SQ NUMBER; 
+                    CUB NUMBER;
+                BEGIN
+                    NUM := &NUMBER;
+                    SQ := NUM * NUM;
+                    CUB := NUM*NUM*NUM;
+                    DBMS_OUTPUT.PUT_LINE('SQUARE:'||SQ);
+                    DBMS_OUTPUT.PUT_LINE('CUBE:'||CUB);
+                END;
+                
+                1.3 Write a PL/SQL code block to accept the name of employee ,basic salary. Calculate HRA 20% and DA 15% on basic salary. Calculate the gross salary = basic salary + HRA + DA & deduct professional tax rs.200/- & Income tax 20% on gross salary. Calculate net salary = gross salary - professional tax - income tax. Display all the details.
+                
+                DECLARE
+                    NAME VARCHAR2(20);
+                    BASIC NUMBER;
+                    DA NUMBER;
+                    HRA NUMBER;
+                    GROSS NUMBER;
+                    PTAX NUMBER;
+                    ITAX NUMBER;
+                    NET NUMBER;
+                BEGIN
+                    NAME := '&NAME';
+                    BASIC := '&NUMBER';
+                    HRA := BASIC*20/100;
+                    DA := BASIC*15/100;
+                    GROSS := BASIC + HRA + DA;
+                    PTAX := 200;
+                    ITAX := GROSS*20/100;
+                    NET := GROSS-PTAX-ITAX;
+                    DBMS_OUTPUT.PUT_LINE('NAME :'||NAME);
+                    DBMS_OUTPUT.PUT_LINE('BASIC SALARY :'||BASIC); 
+                    DBMS_OUTPUT.PUT_LINE('HRA :'||HRA); 
+                    DBMS_OUTPUT.PUT_LINE('DA :'||DA); 
+                    DBMS_OUTPUT.PUT_LINE('GROSS :'||GROSS); 
+                    DBMS_OUTPUT.PUT_LINE('PTAX :'||PTAX); 
+                    DBMS_OUTPUT.PUT_LINE('ITAX :'||ITAX); 
+                    DBMS_OUTPUT.PUT_LINE('NET SALARY :'||NET); 
+                END;
+                
+                1.4 Write a PLSQL code block to accept name of the student & marks in five subjects. calculate total marks and percentage. display all the details.
+                
+                DECLARE
+                    NAME VARCHAR2(20);
+                    S1 NUMBER;
+                    S2 NUMBER;
+                    S3 NUMBER;
+                    S4 NUMBER;
+                    S5 NUMBER;
+                    TMARK NUMBER;
+                    PRT NUMBER;
+                BEGIN
+                    NAME := '&NAME';
+                    S1 := &NUMBER;
+                    S2 := &NUMBER;
+                    S3 := &NUMBER;
+                    S4 := &NUMBER;
+                    S5 := &NUMBER;
+                    TMARK := S1 + S2 + S3 + S4 + S5 ;
+                    PRT := TMARK/5;
+                    DBMS_OUTPUT.PUT_LINE('NAME :'||NAME);
+                    DBMS_OUTPUT.PUT_LINE('S1 :'||S1);
+                    DBMS_OUTPUT.PUT_LINE('S2 :'||S2);
+                    DBMS_OUTPUT.PUT_LINE('S3 :'||S3);
+                    DBMS_OUTPUT.PUT_LINE('S4 :'||S4);
+                    DBMS_OUTPUT.PUT_LINE('S5 :'||S5);
+                    DBMS_OUTPUT.PUT_LINE('TOTAL MARKS :'||TMARK);
+                    DBMS_OUTPUT.PUT_LINE('PERCENTAGE :'||PRT);
+                END;
+                
+                1.5 Create a bare minimum anonymous PL/SQL block to display current system date.
+                
+                BEGIN
+                    DBMS_OUTPUT.PUT_LINE(SYSDATE);
+                END;
+                
+                1.6 Create a functionality anonymous PL/SQL block adding a declaration section to display the current system date using variable.
+                
+                DECLARE 
+                    TII VARCHAR2(9);
+                BEGIN
+                    TII := SYSDATE;
+                    DBMS_OUTPUT.PUT_LINE(TII);
+                END;
+                
+                1.7 Write a PLSQL statement to create table employee with columns empno integer, name varchar2(20), salary decimal(9,2)
+                
+                CREATE TABLE EMPLOYEE( EMPNO INT PRIMARY KEY, NAME VARCHAR2(20), SALARY DECIMAL(9,2));
+                
+                    1.write a pl/sql block to insert data into table
+                        DECLARE
+                            V_EMPLOYEE EMPLOYEE % ROWTYPE;
+                            V_EMPNO INTEGER;
+                            V_NAME VARCHAR2(20);
+                            V_SALARY DECIMAL(9,2);
+                        BEGIN
+                            V_EMPNO := &EMPNO;
+                            V_NAME := &NAME;
+                            V_SALARY := &SALARY;
+                        INSERT INTO EMPLOYEE VALUES(V_EMPNO, V_NAME, V_SALARY);
+                        END;
+                
+                    2.write a pl/sql block to update salary of given employee number.
+                        BEGIN
+                            UPDATE EMPLOYEE SET SALARY = SALARY + 5000;
+                        END;
+                    
+                    3.write a pl/sql block to display the employee name of the given employee number.
+                        DECLARE
+                            V_EMPNAME EMPLOYEE.NAME % TYPE
+                            V_EMPNO INTEGER;
+                        BEGIN
+                            V_EMPNO := &EMPNO;
+                            SELECT NAME INTO V_EMPNAME FROM EMPLOYEE
+                            WHERE EMPNO = V_EMPNO;
+                            DBMS_OUTPUT.PUT_LINE('EMPLOYEE NAME:'||V_EMPNAME);
+                        END;
+                    
+                    4.write a pl/sql block to delete the given employee number.
+                        DECLARE 
+                            V_EMPNO INTEGER;
+                        BEGIN
+                            V_EMPNO==&EMPNO;
+                            DELETE FROM EMPLOYEE WHERE EMPNO = V_EMPNO;
+                        END;
+                </pre>
+                </p>
+        </section>
+
+        <section id="prac2">
+            <h2>Loops in PL/SQL</h2>
+            <p><pre>
+                2.1 Write a pl/sql block to display multiplication table of an accepted number using while loop  
+
+                DECLARE
+                    MNO NUMBER;
+                    I NUMBER:= 1;
+                BEGIN
+                    MNO:=&NUMBER;
+                    WHILE I<=10 LOOP
+                    DBMS_OUTPUT.PUT_LINE(MNO*I);
+                    I := I + 1;
+                    END LOOP;
+                END;
+                
+                2.2 Write a pl/sql block code to display sum of the square of 1st 10 natural numbers using basic loop.
+                
+                DECLARE
+                    I NUMBER := I;
+                    MSUM NUMBER := 0;
+                BEGIN
+                    LOOP
+                    MSUM := MSUM + (I*I);
+                    I := I + 1;
+                    EXIT WHEN I>10;
+                    END LOOP
+                    DBMS_OUTPUT.PUT_LINE('SUM OF THE SQUARE OF FIRST 10 NATURAL NUMBER:'||MSUM);
+                END;
+                
+                2.3 Write pl/sql block code to display the sum of the 100 natural numbers using for loop
+                
+                DECLARE
+                    I NUMBER := 1;
+                    MSUM NUMBER := 0;
+                BEGIN
+                    FOR I IN 1..100 LOOP
+                    MSUM := MSUM + 1;
+                    END LOOP;
+                    DBMS_OUTPUT.PUT_LINE(MSUM);
+                END;
+                
+                2.4 Write a pl/sql block code to display the number of between 10 & 20 except numberr is
+                
+                DECLARE 
+                    N1 NUMBER(2) := 10;
+                BEGIN
+                    LOOPSTART
+                    WHILE N<20 LOOP
+                    DBMS_OUTPUT.PUT_LINE('VALUE OF N1:'||N1);
+                    N1 := N1 + 1;
+                    IF N1 = 15 THEN
+                    N1:= N1 +1;
+                    GOTO LOOPSTART;
+                    END IF;
+                    END LOOP;
+                END;
+                
+                2.5 Write pl/sql block to print first 5 fibonaci series term first two number are 0 & 1 respectively using for loop.
+                
+                DECLARE
+                    FIRST NUMBER := 0;
+                    SECOND NUMBER := 1;
+                    TEMP NUMBER;
+                    N NUMBER := 5;
+                    I NUMBER;
+                BEGIN
+                    DBMS_OUTPUT.PUT_LINE('SERIES');
+                    DBMS_OUTPUT.PUT_LINE(FIRST);
+                    DBMS_OUTPUT.PUT_LINE(SECOND);
+                    FOR I IN 2..N LOOP
+                    TEMP := FIRST + SECOND;
+                    FIRST := SECOND ;
+                    SECOND := TEMP ;
+                    DBMS_OUTPUT.PUT_LINE(TEMP);
+                    END LOOP;
+                END;
+                
+                2.6 Write a pl/sql block code to find the product of the series 3*6*9..*33.
+                
+                DECLARE
+                    P NUMBER := 1;
+                    I NUMBER := 3;
+                BEGIN
+                    LOOP
+                    EXIT WHEN I>33;
+                    P := P*I;
+                    I := I+3;
+                    END LOOP;
+                    DBMS_OUTPUT.PUT_LINE('THE PRODUCT OF SERIES IS : '||P);
+                END;
+                
+                    
+                </pre></p>
+        </section>
+
+        <section id="prac3">
+            <h2>PL/SQL conditional statements</h2>
+            <p><PRE>
+                3.1 write a pl/sql block to accept a number from user and find whether the number is divisible by 7 using case statement . display atthe appropriate message
+
+                DECLARE 
+                    MNO NUMBER;
+                    MREM NUMBER;
+                BEGIN
+                    MNO := &NUMBER;
+                    MREM := MOD(MNO,7);
+                    IF MREM = 0 THEN
+                    DBMS_OUTPUT.PUT_LINE('NUMBER: '||MNO||'IS DIVISIBLE BY 7');
+                    ELSE 
+                    DBMS_OUTPUT.PUT_LINE('NUMBER: '||MNO||'IS NOT DIVISIBLE BY 7');
+                    END IF;
+                END;
+                
+                3.2 write a pl/sql block to accept the sales and calculate the commission for a salesman. if the sales amount is more than rs.30000 the commision will be 15% of sales amount otherwise it will be 12% of sales amount 
+                
+                DECLARE 
+                    MSALAMT NUMBER;
+                    MCOMMISSION NUMBER;
+                BEGIN
+                    MSALAMT := &SALESAMOUNT;
+                    IF MSALAMT > 30000 THEN
+                    MCOMMISSION := MSALAMT*15/100;
+                    ELSE
+                    MCOMMISSION := MSALAMT*12/100;
+                    END IF;
+                    DBMS_OUTPUT.PUT_LINE('SALES AMOUNT: '||MSALAMT||'COMMISSION:'||COMMISSION);
+                END;
+                
+                3.3 write a pl/sql code block to accept student identity number and number of days a book is borrowed for the first seven days there is no fine.for daus exceeding seven fine is one ruppee per day. calculate find and display student identity number and fine to be paid.
+                
+                DECLARE
+                    STUDID NUMBER;
+                    DAYS NUMBER;
+                    FINE NUMBER;
+                BEGIN
+                    STUDID := &STUDID;
+                    DAYS:= &DAYS;
+                    IF DAYS < 7 THEN
+                    FINE:= 0;
+                    ELSE 
+                    FINE:= DAYS - 7;
+                    END IF;
+                    DBMS_OUTPUT.PUT_LINE('STUDENT ID NUMBER: '||STUDID);
+                    DBMS_OUTPUT.PUT_LINE('FINE TO BE PAID: '||FINE);
+                END;
+                
+                3.4 write a pl/sql code block to accept the name of student and his percentages obtained. displaye the grade as per the following table using if then elseif statement
+                 
+                DECLARE 
+                    SNAME VARCHAR2(20);
+                    A NUMBER;
+                BEGIN
+                    SNAME := '&NAME';
+                    A:= &PERCENTAGE;
+                    IF A>84 THEN 
+                    DBMS_OUTPUT.PUT_LINE('GRADE:O');
+                    ELSE IF A>74 THEN
+                    DBMS_OUTPUT.PUT_LINE('GRADE:A');
+                    ELSE IF A>64 THEN
+                    DBMS_OUTPUT.PUT_LINE('GRADE:B');
+                    ELSE IF A>54 THEN
+                    DBMS_OUTPUT.PUT_LINE('GRADE:C');
+                    ELSE IF A>44 THEN
+                    DBMS_OUTPUT.PUT_LINE('GRADE:D');
+                    ELSE IF A>34 THEN
+                    DBMS_OUTPUT.PUT_LINE('GRADE:E');
+                    ELSE 
+                    DBMS_OUTPUT.PUT_LINE('GRADE:F');
+                    END IF;
+                END;
+                
+                3.5 write a pl/sql code block to accept the name of student and his grade obtained. Display the remarks as per the following table using case statement.
+                
+                DECLARE
+                    SNAME VARCHAR2(20);
+                    GRADE CHAR(1);
+                BEGIN
+                    SNAME:='&NAME';
+                    GRADE:='&GRADE';
+                    CASE GRADE
+                    WHEN 'A' THEN DBMS_OUTPUT.PUT_LINE('REMARK: EXCELLENT');
+                    WHEN 'B' THEN DBMS_OUTPUT.PUT_LINE('REMARK: VERY GOOD');
+                    WHEN 'C' THEN DBMS_OUTPUT.PUT_LINE('REMARK: WELL DONE');
+                    WHEN 'D' THEN DBMS_OUTPUT.PUT_LINE('REMARK: YOU PASSED');
+                    WHEN 'E' THEN DBMS_OUTPUT.PUT_LINE('REMARK: BETTER TRY AGAIN');
+                    ELSE DBMS_OUTPUT.PUT_LINE('REMARK: NO SUCH GRADE');
+                    END CASE;
+                END;
+                
+                3.6 write a pl/sql code block to accept the month number and display the name of month using search case statement
+                
+                DECLARE
+                    M NUMBER;
+                BEGIN
+                    M:='&MONTH';
+                    CASE
+                    WHEN M = 1 THEN DBMS_OUTPUT.PUT_LINE('JANUARY');
+                    WHEN M = 2 THEN DBMS_OUTPUT.PUT_LINE('FEBRAURY');
+                    WHEN M = 3 THEN DBMS_OUTPUT.PUT_LINE('MARCH');
+                    WHEN M = 4 THEN DBMS_OUTPUT.PUT_LINE('APRIL');
+                    WHEN M = 5 THEN DBMS_OUTPUT.PUT_LINE('MAY');
+                    WHEN M = 6 THEN DBMS_OUTPUT.PUT_LINE('JUNE');
+                    WHEN M = 7 THEN DBMS_OUTPUT.PUT_LINE('JULY');
+                    WHEN M = 8 THEN DBMS_OUTPUT.PUT_LINE('AUGUST');
+                    WHEN M = 9 THEN DBMS_OUTPUT.PUT_LINE('SEPTEMBER');
+                    WHEN M = 10 THEN DBMS_OUTPUT.PUT_LINE('OCTOBER');
+                    WHEN M = 11 THEN DBMS_OUTPUT.PUT_LINE('NOVEMBER');	
+                    WHEN M = 12 THEN DBMS_OUTPUT.PUT_LINE('DECEMBER');
+                    ELSE DBMS_OUTPUT.PUT_LINE('INVALID MONTH NUMBER:');
+                    END CASE;
+                END;
+                
+                3.7 write a pl/sql code block to accept the day of the week number and display the name of day using case expression
+                
+                DECLARE
+                    D NUMBER;
+                BEGIN
+                    D:=&WEEKDAY1TO7;
+                    CASE D
+                    WHEN 1 THEN DBMS_OUTPUT.PUT_LINE('MONDAY');
+                    WHEN 2 THEN DBMS_OUTPUT.PUT_LINE('TUESDAY');
+                    WHEN 3 THEN DBMS_OUTPUT.PUT_LINE('WEDNESDAY');
+                    WHEN 4 THEN DBMS_OUTPUT.PUT_LINE('THURSDAY');
+                    WHEN 5 THEN DBMS_OUTPUT.PUT_LINE('FRIDAY');
+                    WHEN 6 THEN DBMS_OUTPUT.PUT_LINE('SATURDAY');
+                    WHEN 7 THEN DBMS_OUTPUT.PUT_LINE('SUNDAY');
+                    ELSE DBMS_OUTPUT.PUT_LINE('INVALID NUMBER:');
+                    END CASE;
+                END;
+                
+                3.8 write a pl/sql program to accept name fo salesman total sales and calculate the commission using following tabel calculate bonus as 4% of the total sales whenever the sales is above rs. 200000 otherwise no bonus is given and total earnings commission + bonus display all details 
+                
+                DECLARE
+                    SLSNAME VARCHAR2(20);
+                    TOTSAL DECIMAL(9,2);
+                    COMMISSION NUMBER;
+                    BONUS NUMBER;
+                    TOLER NUMBER;
+                BEGIN
+                    SLSNAME:='&NAME'; 
+                    TOTSAL:='&NUMBER';
+                    IF TOTSAL <=50000 THEN
+                    COMMISSION := TOTSAL *8/100;
+                    ELSE IF TOTSAL <= 125000 THEN 
+                    COMMISSION := 50000*8/100+(TOTSAL-50000)+10/100;
+                    ELSE
+                    COMMISSION:= 50000*8/100+75000*10/100+(TOTSAL-125000);
+                    END IF;
+                    IF TOTSAL>200000 THEN
+                    BONUS:= TOTSAL *4/100;
+                    ELSE
+                    BONUS := 0;
+                    END IF;
+                    TOLER := COMMISSION + BONUS;
+                    DBMS_OUTPUT.PUT_LINE('NAME OF SALESMAN: '||SLSMAN);
+                    DBMS_OUTPUT.PUT_LINE('TOTAL COMMISSION: '||COMMISSION);
+                    DBMS_OUTPUT.PUT_LINE('BONUS: '||BONUS);		
+                    DBMS_OUTPUT.PUT_LINE('TOTAL EARNING: '||TOLER);
+                    END IF;
+                END;
+                
+                
+                    
+                    </PRE></p>
+        </section>
+
+        <section id="prac8">
+            <h2>Trigger in PL/SQL</h2>
+            <p><pre>
+                8.1 Create table Employee with the columns ID integer primary key, name variable character width 20 and Salary of
+                decimal type with 9 width and 2 decimals.
+                
+                Create table Employee(ID INT PRIMARY KEY, NAME VARCHAR2(20), SALARY DECIMAL(9,2));
+                
+                8.2 Create a trigger to display the salary difference between the old values and new values. Insert 5
+                meaningful rows into Employee table.
+                
+                CREATE OR REPLACE TRIGGER display_salary_changes
+                BEFORE DELETE OR INSERT OR UPDATE ON Employee
+                FOR EACH ROW
+                WHEN (NEW.ID > 0)
+                DECLARE
+                sal_diff number;
+                BEGIN
+                sal_diff := :NEW.salary - :OLD.salary;
+                dbms_output.put_line('Old salary: ' || :OLD.salary);
+                dbms_output.put_line('New salary: ' || :NEW.salary);
+                dbms_output.put_line('Salary difference: ' || sal_diff);
+                END;
+                /
+                
+                insert into employee values(101,'sonal',9000);
+                insert into employee values(102,'pasnal',10000);
+                insert into employee values(103,'kunal',8000);
+                insert into employee values(104,'minal',9500);
+                insert into employee values(105,'monal',9000);
+                
+                8.3 create a trigger that checks whether the new or updated salary exceeds the maximum allowed salary,
+                and raises an exception. Update the salary of any two employees having salary as 15000 and 10000
+                resepectively.
+                
+                CREATE OR REPLACE TRIGGER check_salary
+                BEFORE INSERT OR UPDATE ON Employee
+                FOR EACH ROW
+                DECLARE
+                max_salary NUMBER := 10000;
+                BEGIN
+                IF :NEW.salary > max_salary THEN RAISE_APPLICATION_ERROR(-20001, 'Salary cannot
+                exceed ' || max_salary);
+                END IF;
+                END;
+                /
+                
+                8.4 create an INSTEAD OF trigger to process UPDATE statements directed to the view. The trigger
+                updates rows into the base tables of the view. Make changes to the name and salary of any of the
+                employee.
+                
+                create or replace trigger employee_view_trigger
+                instead of update on emp_info
+                referencing new as new old as old
+                begin
+                update employee
+                set name = :new.name,
+                salary = :new.salary
+                where id = :old.id;
+                end;
+                /
+                
+                create view emp_info as select * from employee;
+                
+                update emp_info set name="monal", salary=salary+500 where id= 105;
+                    
+                </pre></p>
+        </section>
+
+        <section id="prac9">
+            <h2>Exception Handling</h2>
+            <p><pre>
+                9.1 Create a table named student having columns id integer, name character variable width 10
+                columns, mobile character variable width 10 columns and email character variable width 10
+                columns. Create a sequence seq_stud starting from 101 and increment by 1. Create a procedure
+                val_ins1 to insert the rows into student table. Call the procedure and enter 5 meaningful rows.
+                
+                create table student (id number(5),name varchar2(10), mobile varchar2(10),email
+                varchar2(25));
+                create sequence seq_stud
+                start with 101
+                increment by 1;
+                create or replace procedure val_ins1(S_name IN varchar2,s_mobile IN varchar2, S_email IN
+                varchar2) is
+                begin
+                insert into student values (seq_stud.nextval, S_name,s_mobile, S_email);
+                commit;
+                end val_ins1;
+                /
+                
+                exec val_ins1('Aditya','9786541235','aditya@gmail.com');
+                exec val_ins1('Sanika','7894563218','sanika@gmail.com');
+                
+                9.2 Write a PL/SQL program to display the student name and mobile no of a student whose id is
+                will be accepted from user, also handle an error if data is not found using system defined
+                exception.
+                
+                DECLARE
+                s_id student.id%type;
+                s_name student.Name%type;
+                s_mobile student.mobile%type;
+                BEGIN
+                s_id:=&Student_ID;
+                SELECT name, mobile INTO s_name, s_mobile
+                FROM student
+                WHERE id = s_id;
+                DBMS_OUTPUT.PUT_LINE ('Name: '|| s_name);
+                DBMS_OUTPUT.PUT_LINE ('Address: ' || s_mobile);
+                EXCEPTION
+                WHEN no_data_found THEN
+                dbms_output.put_line('No such Student!');
+                WHEN others THEN
+                dbms_output.put_line('Error!');
+                END;
+                
+                9.3 Write a PL/SQL program to display the student name and mobile no of a student whose id is will
+                be accepted from user, also handle an error if data is not found using user-defined exception. Run
+                this program for the inputs as 0, 120 and 103.
+                
+                DECLARE
+                s_id student.id%type:=&sudent_id;
+                s_name student.Name%type;
+                s_mobile student.mobile%type;
+                -- user defined exception
+                ex_invalid_id EXCEPTION;
+                BEGIN
+                IF s_id <= 0 THEN
+                RAISE ex_invalid_id;
+                ELSE
+                SELECT name, mobile INTO s_name, s_mobile
+                FROM student
+                WHERE id = s_id;
+                DBMS_OUTPUT.PUT_LINE ('Name: '|| s_name);
+                DBMS_OUTPUT.PUT_LINE ('Address: ' || s_mobile);
+                END IF;
+                EXCEPTION
+                WHEN ex_invalid_id THEN
+                dbms_output.put_line('ID must be greater than zero!');
+                WHEN no_data_found THEN
+                dbms_output.put_line('No such Student!');
+                WHEN others THEN
+                dbms_output.put_line('Error!');
+                END;
+                </pre></p>
+        </section>
+
+        <section id="prac10">
+            <h2>PL/SQL Packages</h2>
+            <p><pre>
+                10.1 Create a table named student having columns id integer, name character variable width
+                10 columns, mobile character variable width 10 columns and email character variable
+                width 10 columns. Create a sequence seq_stud starting from 101 and increment by 1.
+                Create a procedure val_ins1 to insert the rows into student table.
+                
+                create table student (id number(5),name varchar2(10), mobile varchar2(10),email
+                varchar2(25));
+                
+                create sequence seq_stud
+                start with 101
+                increment by 1;
+                create or replace procedure val_ins1(S_name IN varchar2,s_mobile IN varchar2, S_email IN
+                varchar2) is
+                begin
+                insert into student values (seq_stud.nextval, S_name,s_mobile, S_email);
+                commit;
+                end val_ins1;
+                /
+                
+                10.2 the procedure and enter 5 meaningful rows.
+                exec val_ins1('Aditya','9786541235','aditya@gmail.com');
+                exec val_ins1('Sanika','7894563218','sanika@gmail.com');
+                
+                10.3 create a package s_package which should include the procedure to add student, delete
+                the student and display the names of students.
+                
+                CREATE OR REPLACE PACKAGE s_package AS
+                -- Adds a student
+                PROCEDURE addStudent(s_id student.id%type,
+                s_name student.Name%type,
+                s_mobile student.mobile%type,
+                s_email student.email%type);
+                -- Removes a student
+                PROCEDURE delStudent(s_id student.id%TYPE);
+                --Lists all student
+                PROCEDURE listStudent;
+                END s_package;
+                /
+                
+                CREATE OR REPLACE PACKAGE BODY s_package AS
+                PROCEDURE addStudent(s_id student.id%type,
+                s_name student.Name%type,
+                s_mobile student.mobile%type,
+                s_email student.email%type)
+                IS
+                BEGIN
+                INSERT INTO student (id,name,mobile,email)
+                VALUES(s_id, s_name, s_mobile, s_email);
+                END addStudent;
+                PROCEDURE delStudent(s_id student.id%type) IS
+                BEGIN
+                DELETE FROM student
+                WHERE id = s_id;
+                END delStudent;
+                
+                PROCEDURE liststudent IS
+                CURSOR s_student is
+                SELECT name FROM student;
+                TYPE s_list is TABLE OF student.Name%type;
+                name_list s_list := s_list();
+                counter integer :=0;
+                BEGIN
+                FOR n IN s_student LOOP
+                counter := counter +1;
+                name_list.extend;
+                name_list(counter) := n.name;
+                dbms_output.put_line('Student (' ||counter|| ') '||name_list(counter));
+                END LOOP;
+                END liststudent;
+                END s_package;
+                /
+                
+                10.4 Write a PL/SQL block to access the package elements and add 2 rows, delete 1 row and list
+                the names of the students.
+                
+                DECLARE
+                code student.id%type:= 103;
+                BEGIN
+                s_package.addstudent(106, 'Rajnish', '7658954321', 'rajnish@gmail.com');
+                s_package.addstudent(107, 'Sourabh', '8976532411', 'Sourabh@gmail.com');
+                s_package.liststudent;
+                s_package.delstudent(code);
+                dbms_output.put_line(‘ ‘);
+                dbms_output.put_line(‘Student List after Deletion ‘);
+                s_package.liststudent;
+                END;	
+                /
+                </pre></p>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p style="align-content: center;">&copy; 2024 PL/SQL Documentation</p>
+    </footer>
+
+</body>
+</html>

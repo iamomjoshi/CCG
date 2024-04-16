@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cpp resources</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>/* Reset default margin and padding */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        /* Body styles */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #1a1a1a;
+            color: #fff;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        
+        /* Navigation styles */
+        .navigation {
+            width: 250px;
+            background-color: #282828;
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            overflow-y: auto;
+            padding-top: 60px;
+        }
+        
+        .navigation ul {
+            list-style: none;
+            padding-left: 20px;
+        }
+        
+        .navigation ul li {
+            margin-bottom: 10px;
+        }
+        
+        .navigation ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1em;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        
+        .navigation ul li a:hover {
+            background-color: #333;
+        }
+        
+        /* Main content styles */
+        .main-content {
+            margin-left: 250px;
+            padding: 20px;
+        }
+        
+        .main-content h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        
+        .main-content p {
+            font-size: 1.1em;
+            margin-bottom: 20px;
+        }
+        
+        /* Footer styles */
+        .footer {
+            background-color: #282828;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+        </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navigation">
+        <ul>
+            <li><a href="#prac1">PRACTICAL 1</a></li>
+            <li><a href="#prac2">PRACTICAL 2</a></li>
+            <li><a href="#prac3">PRACTICAL 3</a></li>
+            <li><a href="#prac4">PRACTICAL 4</a></li>
+            <li><a href="#prac5">PRACTICAL 5</a></li>
+            <li><a href="#prac6">PRACTICAL 6</a></li>
+            <li><a href="#prac7">PRACTICAL 7</a></li>
+            <li><a href="#prac8">PRACTICAL 8</a></li>
+            <li><a href="#prac9">PRACTICAL 9</a></li>
+            <!-- Add more sections as needed -->
+        </ul>
+    </nav>
+
+    <!-- Main content -->
+    <main class="main-content">
+        <section id="prac1">
+            <h2>BASIC C++ PROGRAM's</h2>
+            <pre><code>
+                1. write a cpp program to create a simple calculator 
+
+                #include&lt;iostream&gt;
+                using namespace std;
+                int main(){
+                char op;
+                float num1, num2;
+                cout&lt;&lt;"enter two number's:"&lt;&lt;endl;
+                cin&gt;&gt;num1&gt;&gt;num2;
+                cout&lt;&lt;"enter the operator"&lt;&lt;endl;
+                cin&gt;&gt;op;
+                switch(op){
+                    case '+': cout&lt;&lt;"addition:"&lt;&lt;num1+num2&lt;&lt;endl;
+                        break;
+                    case '-': cout&lt;&lt;"subtraction:"&lt;&lt;num1-num2&lt;&lt;endl;
+                        break;
+                    case '*': cout&lt;&lt;"multiplication:"&lt;&lt;num1*num2&lt;&lt;endl;
+                        break;
+                    case '/': cout&lt;&lt;"division:"&lt;&lt;num1/num2&lt;&lt;endl;
+                        break;
+                    default: cout&lt;&lt;"invalid operator!"&lt;&lt;endl;
+                }
+                return 0;
+            }
+
+            2.write a cpp program to convert seconds into hours , minutes and seconds.
+
+            #include&lt;iostream&gt;
+            using namespace std;
+            int main(){
+                int ts;
+                float hr, sec, min;
+                cout&lt;&lt;"enter total seconds:"&lt;&lt;endl;
+                cin&gt;&gt;ts;
+                hr = ts / 3600;
+                min = (ts % 3600) / 60;
+                sec = (ts % 3600) % 60;
+                cout&lt;&lt;"seconds in hours: "&lt;&lt;hr&lt;&lt;endl;
+                cout&lt;&lt;"seconds in minutes: "&lt;&lt;min&lt;&lt;endl;
+                cout&lt;&lt;"seconds in seconds: "&lt;&lt;sec&lt;&lt;endl;
+                return 0;
+            }
+
+            3.write a cpp program to find a volume of square, cone, rectangle
+
+            #include&lt;iostream&gt;
+            using namespace std;
+            int main(){
+                float a, b, c, d, e, f;
+                cout&lt;&lt;"enter a side :"&lt;&lt;endl;
+                cin&gt;&gt;a;
+                cout&lt;&lt;"volume of square :"&lt;&lt;a*a&lt;&lt;endl;
+                cout&lt;&lt;"enter radius and height :"&lt;&lt;endl;
+                cin&gt;&gt;c&gt;&gt;b;
+                cout&lt;&lt;"volume of cone :"&lt;&lt;(3.14*c*c*b)&lt;&lt;endl;
+                cout&lt;&lt;"enter rectangle values:"&lt;&lt;endl;
+                cin&gt;&gt;d&gt;&gt;e&gt;&gt;f;
+                cout&lt;&lt;"volume of rectangle :"&lt;&lt;d*e*f&lt;&lt;endl;
+                return 0;
+            }
+            </code></pre>
+            <!-- Add more content as needed -->
+        </section>
+
+        <section id="prac2">
+            <h2>CONDITIONAL STATEMENTS PROGRAM'S</h2>
+            <pre><code>
+                1.write a cpp program to find the greatest of 3 numbers 
+
+                #include&lt;iostream&gt;
+                using namespace std;
+                int main(){
+                    int a,b,c;
+                    cout&lt;&lt;"enter a: "&lt;&lt;endl;
+                    cin&gt;&gt;a;
+                    cout&lt;&lt;"enter b: "&lt;&lt;endl;
+                    cin&gt;&gt;b;
+                    cout&lt;&lt;"enter c: "&lt;&lt;endl;
+                    cin&gt;&gt;c;
+                    if(a&gt;b&amp;&amp;a&gt;c){
+                            cout&lt;&lt;"a is greater than b &amp; c"&lt;&lt;endl;
+                        }
+                    else if(b&gt;a&amp;&amp;b&gt;c){
+                            cout&lt;&lt;"b is greater than a &amp; c"&lt;&lt;endl;
+                        }
+                    else{
+                            cout&lt;&lt;"c is greater than b &amp; a"&lt;&lt;endl;
+                        }
+                    return 0;
+                }
+
+                2.write a cpp program ro find total no. of even and odd numbers
+                 
+                #include&lt;iostream&gt;
+                using namespace std;
+                int main(){
+                    //write a code to print the number of even number till the number 
+                    int n,evencount,oddcount;
+                    evencount=0;
+                    oddcount=0;
+                    cout&lt;&lt;"enter the number: "&lt;&lt;endl;
+                    cin&gt;&gt;n;
+                    for(int i=1;i&lt;=n;i++){
+                        if(i%2==0){
+                            evencount=evencount+1;
+                        }
+                        else{
+                            oddcount=oddcount+1;
+                        }
+                    }
+                    cout&lt;&lt;"number of even: "&lt;&lt;evencount&lt;&lt;endl;
+                    cout&lt;&lt;"number of odd: "&lt;&lt;oddcount&lt;&lt;endl;
+                    return 0;
+                }
+
+                3.write a cpp program ro generate prime number between 1 and n , where n is input
+
+                #include&lt;iostream&gt;
+                using namespace std;
+                int main(){
+                    int n;
+                    int chk=0;
+                    cout&lt;&lt;"enter the number: "&lt;&lt;endl;
+                    cin&gt;&gt;n;
+                    for(int i=1;i&lt;=n;i++)
+                    {
+                        for(int j=2;j&lt;i;j++)
+                        {
+                            if(i%j==0)
+                            {
+                            chk++;
+                            break;
+                            }
+                        
+                        }
+                    if(chk==0&amp;&amp;i!=1)
+                    {
+                    cout&lt;&lt;i&lt;&lt;endl;
+                    }
+                    chk=0;
+                    }
+                    return 0;
+                }
+
+            </code></pre>
+            <!-- Add more content as needed -->
+        </section>
+
+        <section id="prac3">
+            <h2>CLASSES AND OBJECTS</h2>
+            <pre><CODE>
+                1. cpp program using classes and object student to print name of student , roll no. display the same.
+
+                #include&lt;iostream&gt;
+                using namespace std;
+
+                class student{
+                    public:
+                        string name;
+                        int roll_no;
+                        void input(){
+                            cout&lt;&lt;"enter name: "&lt;&lt;endl;
+                            cin&gt;&gt;name;
+                            cout&lt;&lt;"enter roll no: "&lt;&lt;endl;
+                            cin&gt;&gt;roll_no;
+                        }
+                        void display()
+                        {
+                            cout&lt;&lt;"name is: "&lt;&lt;name&lt;&lt;endl;
+                            cout&lt;&lt;"roll no is: "&lt;&lt;roll_no&lt;&lt;endl;
+                        }
+                };
+
+                int main(){
+                    student s;
+                    s.input();
+                    s.display();
+                    return 0;
+                }
+
+                2.cpp program for bank employee to print name of the a/c no and balance. display the same also display balanace , withdraw and deposit
+
+                #include&lt;iostream&gt;
+                using namespace std;
+
+                class bank
+                {  
+                public:
+                    string name; 
+                    int acc;
+                    float bala;
+                    void input(){
+                        cout&lt;&lt;"enter name :"&lt;&lt;endl;
+                        cin&gt;&gt;name;
+                        cout&lt;&lt;"enter a/c no:"&lt;&lt;endl;
+                        cin&gt;&gt;acc;
+                        cout&lt;&lt;"Balance :"&lt;&lt;endl;
+                        cin&gt;&gt;bala;
+                    }
+                    
+                    void funuc(){
+                        int choi;
+                        float add,sub,ans;
+                        cout&lt;&lt;"enter 1 for withdraw,or else 2 for deposit: "&lt;&lt;endl;
+                        cin&gt;&gt;choi;
+                        switch(choi){
+                            case 1:
+                                cout&lt;&lt;"acc no: "&lt;&lt;acc&lt;&lt;endl;
+                                cout&lt;&lt;"current bala:"&lt;&lt;bala&lt;&lt;endl;
+                                cout&lt;&lt;"enter the amt:"&lt;&lt;endl;
+                                cin&gt;&gt;sub;
+                                cout&lt;&lt;"balance after withdrawl:"&lt;&lt;bala-sub&lt;&lt;endl;
+                                break;
+                                
+                            case 2:
+                                cout&lt;&lt;"acc no: "&lt;&lt;acc&lt;&lt;endl;
+                                cout&lt;&lt;"current bala:"&lt;&lt;bala&lt;&lt;endl;
+                                cout&lt;&lt;"enter the amt:"&lt;&lt;endl;
+                                cin&gt;&gt;add;
+                                cout&lt;&lt;"balance after deposit:"&lt;&lt;bala+add&lt;&lt;endl;
+                                break;
+                        }
+                    }
+                };
+
+                int main()
+                {
+                    bank Adi;
+                    Adi.input();
+                    Adi.funuc();
+                    return 0;
+                }
+
+                3.write a cpp program to design a class havind static member function names showcount(), which has property of displaying the number of object created of the class
+
+                #include&lt;iostream&gt;
+                using namespace std;
+
+                class test{
+                private:
+                    int code;
+                    static int count;
+                public:
+                    void set_code(){
+                        code=++count;
+                    }
+                    void show_code(){
+                        cout&lt;&lt;"object number:"&lt;&lt;code&lt;&lt;endl;
+                    }
+                    static void show_count(){
+                        cout&lt;&lt;"count: "&lt;&lt;count&lt;&lt;endl;
+                    }
+                };
+
+                int test::count;
+
+                int main(){
+                    test t1, t2, t3;
+                    t1.set_code();
+                    t1.show_code();
+                    t2.set_code();
+                    t2.show_code();
+                    t3.set_code();
+                    t3.show_code();
+                    return 0;
+                }
+
+                4.write a cpp program to find maximum out of two numbers using friend function.
+
+                #include&lt;iostream&gt;
+                using namespace std;
+
+                class b; // Forward declaration
+
+                class a{
+                    int n;
+                public:
+                    a(int x){
+                        n = x;
+                    }
+                    friend void greatest(a a1, b b1);
+                };
+
+                class b{
+                    int n1;
+                public:
+                    b(int x){
+                        n1 = x;
+                    }
+                    friend void greatest(a a1, b b1);
+                };
+
+                void greatest(a a1, b b1){
+                    if(a1.n > b1.n1){
+                        cout&lt;&lt;"number in class a is greatest: "&lt;&lt;a1.n&lt;&lt;endl;
+                    }
+                    else if(a1.n < b1.n1){
+                        cout&lt;&lt;"number in class b is greatest: "&lt;&lt;b1.n1&lt;&lt;endl;
+                    }
+                    else{
+                        cout&lt;&lt;"both numbers are equal"&lt;&lt;endl;
+                    }
+                }
+
+                int main(){
+                    cout&lt;&lt;"Program to find greatest of 2 numbers in 2 different classes using friend function"&lt;&lt;endl;
+                    int n1, n2;
+                    cout&lt;&lt;"Enter number for class a: "&lt;&lt;endl;
+                    cin&gt;&gt;n1;
+                    a a1(n1);
+                    cout&lt;&lt;"Enter number for class b: "&lt;&lt;endl;
+                    cin&gt;&gt;n2;
+                    b b1(n2);
+                    greatest(a1, b1);
+                    cout&lt;&lt;"/n";
+                    return 0;
+
+                5.write a cpp progra using copy constructor to copy data of an objecto to another object
+
+                    #include&lt;iostream&gt;
+                    using namespace std;
+                    
+                    class student{
+                    public:
+                        int rollcall;
+                        float cgpa;
+                        student(){
+                            //default constructor
+                            rollcall=0;
+                            cgpa=0.00;
+                        }
+                        student(int x,float y){
+                            //parameter constructor
+                            rollcall=x;
+                            cgpa=y;
+                        }
+                        student(student&amp; a){
+                            //copy constructor
+                            rollcall=a.rollcall;
+                            cgpa=a.cgpa;
+                        }
+                    };
+                    
+                    int main(){
+                        student om(14,95.35);
+                        student aditya(om);
+                        student appa;
+                        cout&lt;&lt;"om's rollno:"&lt;&lt;om.rollcall&lt;&lt;endl;
+                        cout&lt;&lt;"om's cgpa:"&lt;&lt;om.cgpa&lt;&lt;endl;
+                        cout&lt;&lt;"aditya's rollno:"&lt;&lt;aditya.rollcall&lt;&lt;endl;
+                        cout&lt;&lt;"aditya's cgpa:"&lt;&lt;aditya.cgpa&lt;&lt;endl;
+                        cout&lt;&lt;"appa's rollno:"&lt;&lt;appa.rollcall&lt;&lt;endl;
+                        cout&lt;&lt;"appa's cgpa:"&lt;&lt;appa.cgpa&lt;&lt;endl;
+                        return 0;
+                    }
+
+                    6.write a cpp program to allocate memory dynamically for an object of a given class using class constructor 
+
+                    #include&lt;iostream&gt;
+                    using namespace std;
+
+                    class dynamic{
+                        const char*p;
+                        public:
+                            dynamic(){
+                                p=new char[6];
+                                p="geeks";
+                            }
+                        void display(){
+                            cout&lt;&lt;p&lt;&lt;endl;
+                        }	
+                    };
+
+                    int main(){
+                        dynamic d1;
+                        d1.display();
+                        return 0;
+                    }
+            </CODE></pre>
+        </section>
+
+        <section id="prac4">
+            <h2>INHERITANCE, CONSTRUCTOR</h2>
+            <PRE><CODE></CODE></PRE>
+        </section>
+
+        <section id="prac5">
+            <h2>HYBRID INHERITENCE</h2>
+           <PRE><CODE>
+            #include&lt;iostream&gt;
+            using namespace std;
+
+            class student{
+            public:
+                int rollno = 15;
+                void fun1(){
+                    cout &lt;&lt; "roll no is:\t" &lt;&lt; rollno &lt;&lt; endl;
+                }
+            };
+
+            class test : public student{
+            public:
+                int sub1 = 25;
+                int sub2 = 30;
+                void fun2(){
+                    cout &lt;&lt; "marks of sub1 and sub2 are:\t" &lt;&lt; sub1 &lt;&lt; "\t" &lt;&lt; sub2 &lt;&lt; endl;
+                }
+            };
+
+            class sport{
+            public:
+                int score = 35;
+                void fun3(){
+                    cout &lt;&lt; "score is:" &lt;&lt; score &lt;&lt; endl;
+                }
+            };
+
+            class result : public sport, public test{
+            public:
+                void fun4(){
+                    int total = sub1 + sub2 + score;
+                    cout &lt;&lt; "total score is:\t" &lt;&lt; total &lt;&lt; endl;
+                }
+            };
+
+            int main(){
+                result r1;
+                r1.fun1();
+                r1.fun2();
+                r1.fun3();
+                r1.fun4();
+                return 0;
+            }
+        </CODE></PRE>
+        </section>
+        <section id="prac6">
+            <h2>POINTERS</h2>
+           <PRE><CODE>
+            #include&lt;iostream&gt;
+            using namespace std;
+
+            class person
+            {
+                char name[20];
+                int age;
+            public:
+                void getdata(){
+                    cout &lt;&lt; "enter name:" &lt;&lt; endl;
+                    cin &gt;&gt; name;
+                    cout &lt;&lt; "enter age:" &lt;&lt; endl;
+                    cin &gt;&gt; age;
+                }
+                
+                void putdata(){
+                    cout &lt;&lt; "\n\n details about eldest person as follows:" &lt;&lt; endl;
+                    cout &lt;&lt; "\n name=" &lt;&lt; name &lt;&lt; "\n age=" &lt;&lt; age &lt;&lt; endl;
+                }
+                
+                person &Compare(person &p1){
+                    if(p1.age > this->age)
+                        return p1;
+                    else
+                        return *this;
+                }
+            };
+
+            int main(){
+                person x, y, z;
+                x.getdata();
+                y.getdata();
+                z = x.Compare(y);
+                z.putdata();
+                return 0;
+            }
+           </CODE></PRE>
+        </section>
+        <section id="prac7">
+            <h2>VIRTUAL FUNCTIONS</h2>
+           <PRE><CODE>
+            #include&lt;iostream&gt;
+            using namespace std;
+
+            class base{
+            public:
+                void display(){
+                    cout &lt;&lt; "\ndisplay base" &lt;&lt; endl;
+                }
+                virtual void show(){
+                    cout &lt;&lt; "\n show base" &lt;&lt; endl;
+                }
+            };
+
+            class derived : public base{
+            public:
+                void display(){
+                    cout &lt;&lt; "\ndisplay derived" &lt;&lt; endl;
+                }
+                
+                void show(){
+                    cout &lt;&lt; "\n show derived" &lt;&lt; endl;
+                }
+            };
+
+            int main(){
+                base b;
+                derived d;
+                base *bptr;
+                
+                cout &lt;&lt; "\n bptr points to base:\n" &lt;&lt; endl;
+                bptr = &b;
+                bptr->display();
+                bptr->show();
+                
+                cout &lt;&lt; "\n\nbptr points to derived:\n" &lt;&lt; endl;
+                bptr = &d;
+                bptr->display();
+                bptr->show();
+                
+                return 0;
+            }
+           </CODE></PRE>
+        </section>
+        <section id="prac8">
+            <h2>EXCEPTION HANDLING</h2>
+           <PRE><CODE></CODE></PRE>
+        </section>
+        <section id="prac9">
+            <h2>STRING MANIPULATION's</h2>
+           <PRE><CODE></CODE></PRE>
+        </section>
+        <!-- Add more sections as needed -->
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 PL/SQL Documentation</p>
+    </footer>
+
+</body>
+</html>

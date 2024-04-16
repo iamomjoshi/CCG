@@ -1,0 +1,100 @@
+/* Body styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #1a1a1a;
+    color: rgb(255, 255, 255);
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+/* Header styles */
+header {
+    color:rgb(255, 255, 255);
+    padding: 20px 0;
+    text-align: center;
+    position: sticky;
+}
+header h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+/* Main content styles */
+.main-content {
+    margin-top: 20px;
+}
+.main-content .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+.main-content h2 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+}
+.main-content p {
+    font-size: 1.1em;
+    margin-bottom: 20px;
+}
+/* Selection bar styles */
+.selection-bar {
+    background-color: #000000;
+    color: #fff;
+    padding: 10px 0;
+}
+.selection-bar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    
+}
+.selection-bar ul li {
+    display: inline-block;
+    margin-right: 200px;
+    margin-left: 200px;
+}
+.selection-bar ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2em;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+.selection-bar ul li a:hover {
+    background-color: #555;
+}
+#two,#one,#three{
+    color: rgb(13, 193, 82);
+    font-family: Impact;
+}
+.container2{
+    width: 100%;
+}
+/* Style for video background */
+#video-bg {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%; 
+    min-height: 100%;
+    height: auto;
+    width: auto;    
+    z-index: -1000;
+}
+/* Style for content overlay */
+.content-overlay {
+    position: relative;
+    z-index: 1;
+    color: white;
+    text-align: center;
+    padding: 50px;
+}
+.box {
+    width: 100px;
+    height: 100px;
+    background-color: blue;
+    transition: transform 0.3s ease-in-out;
+}
+.box:hover {
+    transform: scale(1.2);
+}
