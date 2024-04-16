@@ -493,8 +493,107 @@
         </section>
 
         <section id="prac4">
-            <h2>INHERITANCE, CONSTRUCTOR</h2>
-            <PRE><CODE></CODE></PRE>
+            <h2>INHERITANCE <h2>
+            <PRE><CODE>
+                1.write a cpp program to illustrate single inheritance.
+                
+                &lt;#include&lt;iostream&gt;
+                using namespace std;
+                class Vehicle
+                {
+                public:
+                    Vehicle()
+                    {
+                    cout &lt;&lt; "This is a Vehicle\n"; 
+                    }
+                };
+                
+                class Car: public Vehicle
+                {
+                };
+                int main()
+                {
+                    Car obj;
+                    return 0;
+                }
+                
+                2.write a program to illustrate multiple inheritance.
+                
+                &lt;#include &lt;iostream&gt;
+                using namespace std;
+                class Vehicle
+                {
+                public:
+                    Vehicle()
+                    {
+                    cout &lt;&lt; "This is a Vehicle\n";
+                    } };
+                class Four Wheeler
+                {
+                public:
+                    FourWheeler()
+                    {
+                        cout &lt;&lt; "This is a 4 wheeler Vehicle\n";
+                    }};
+                
+                class Car: public Vehicle, public FourWheeler {
+                };
+                int main()
+                {
+                    Car obj;
+                    return 0;
+                }
+                
+                3. write a cpp program to illustrate multi level inheritance.
+                
+                &lt;#include &lt;iostream&gt;
+                using namespace std;
+                class Vehicle
+                {
+                public:
+                    Vehicle() { cout &lt;&lt; "This is a Vehicle\n"; }
+                };
+                class fourWheeler: public Vehicle
+                {
+                public:
+                    FourWheeler()
+                    {
+                        cout &lt;&lt; "Objects with 4 wheels are vehicles\n";
+                    }
+                };
+                class Car public fourWheeler
+                {
+                public:
+                    Car()
+                    { cout &lt;&lt; "Car has 4 Wheels\n"; }
+                };
+                int main()
+                {
+                    Car obj;
+                    return 0;
+                }
+                
+                4.write a cpp program to illustrate hiearchichal in heritance
+                
+                &lt;#include &lt;iostream&gt;
+                using namespace std;
+                class Vehicle {
+                public:
+                    Vehicle() { cout &lt;&lt; "This is a Wehicle\n"; }
+                };
+                class Car: public Vehicle
+                {
+                };
+                class Bus: public Vehicle
+                {
+                };
+                int main()
+                {
+                    Car obj1;
+                    Bus obj2;
+                    return 0;
+                }   
+            </CODE></PRE>
         </section>
 
         <section id="prac5">
@@ -635,11 +734,176 @@
         </section>
         <section id="prac8">
             <h2>EXCEPTION HANDLING</h2>
-           <PRE><CODE></CODE></PRE>
+           <PRE><CODE>
+               1. write a cpp program to implement the exception handling with multiple catch statement.
+
+                &lt;#include&lt;iostream&gt;
+                using namespace std;
+                void test(int x)
+                {
+                  try
+                  {
+                    if (x &gt; 0)
+                        throw x;
+                    else
+                        throw 'x';
+                }
+                catch (int x)
+                {
+                    cout &lt;&lt; "Catch a integer and that integer is:" &lt;&lt; x&lt;&lt;endl;
+                }
+                catch (char x)
+                {
+                    cout &lt;&lt; "Catch a character and that character is:" &lt;&lt; x&lt;&lt;endl;
+                }
+                 int main()
+                 {
+                    cout &lt;&lt; "Testing multiple catches: \n";
+                    test(10);
+                    test(0);
+                }
+                
+                2.write a cpp program to implement the exception handling with rethrowing in exception.
+                
+                &lt;#include&lt;iostream&gt;
+                using namespace std;
+                void sub(int i, int j)
+                {
+                  try
+                  {
+                    if(i==0)
+                    {
+                      throw i;
+                    }
+                    else
+                      cout&lt;&lt;"Subtraction result is: "&lt;&lt;i-j&lt;&lt;endl;
+                  }
+                  catch(int i)
+                  {
+                      cout&lt;&lt;"Exception caught inside sub()\n"; throw;
+                  }
+                };
+                int main()
+                {
+                  try
+                  {
+                      sub(8,4);
+                      sub(0,8);
+                  } 
+                  catch(int k)
+                  {
+                      cout&lt;&lt;"Exception caught inside main()\n";
+                  }
+                  return 0;
+                }
+
+           </CODE></PRE>
         </section>
         <section id="prac9">
             <h2>STRING MANIPULATION's</h2>
-           <PRE><CODE></CODE></PRE>
+           <PRE><CODE>
+                1 write a c++ code to show conversion from int to string.
+
+                &lt;#include &lt;iostream&gt;
+                &lt;#include&lt;sstream&gt;
+                using namespace std;
+                int main()
+                {
+                 int k;
+                 cout&lt;&lt;"Enter an integer value";
+                 cin&gt;&gt;k;
+                 stringstream ss;
+                 ss&lt;&lt;k;
+                 string s;
+                 ss&gt;&gt;s;
+                 cout&lt;&lt;"String representation of an integer value is: "&lt;&lt;s;
+                 return 0;
+                }
+                
+               2 write a c++ program to show conersion of string to integer. 
+                
+                &lt;#include &lt;iostream&gt;
+                &lt;#include &lt;sstream&gt; 
+                using namespace std;
+                int main()
+                {
+                string str1;
+                cout&lt;&lt;"Enter an string value: ";
+                cin&gt;&gt;str1;
+                int intdata;
+                stringstream obj;
+                obj &lt;&lt; str1; // insert dato into obj 
+                obj &lt;&lt; intdata; // fetch integer type data
+                cout &lt;&lt; " The representation of the string to integer type data is: &lt;&lt; intdata &lt;&lt; endl;
+                return 0;
+                }
+                
+               3 write a c++ program implementing basic operation of class ios i.e setf, unsetf, precision, etc. 
+                
+                &lt;#include &lt;iostream&gt;
+                &lt;#include &lt;fstream&gt;
+                
+                using namespace std;
+                
+                int main()
+                {
+                  cout &lt;&lt; "Example for formatted 10" &lt;&lt; endl;
+                
+                  cout &lt;&lt; "Default: " &lt;&lt; endl;
+                  cout &lt;&lt; 123 &lt;&lt; endl;
+                
+                  cout &lt;&lt; "width(10): " &lt;&lt; endl; 
+                  cout.width(10);
+                  cout &lt;&lt; 123 &lt;&lt; endl;
+                
+                  cout &lt;&lt; "width(6) and fill('*'): " &lt;&lt; endl; 
+                  cout.width(6);
+                  cout.fill('*');
+                  cout &lt;&lt; 123 &lt;&lt; endl;
+                
+                  cout.precision(5);
+                  cout &lt;&lt; "precision (5) ---&gt; " &lt;&lt; 123.4567890 &lt;&lt; endl;
+                  cout &lt;&lt; "precision (5) ---&gt; " &lt;&lt;&lt;&lt;&lt;&lt; 9.876543210 &lt;&lt; endl;
+                
+                  cout &lt;&lt; "setf (showpos): " &lt;&lt; endl; 
+                  cout.setf(ios::showpos);
+                  cout &lt;&lt; 123 &lt;&lt; endl;
+                
+                  cout &lt;&lt; "unsetf (showpos): " &lt;&lt; endl; 
+                  cout.unsetf(ios::showpos);
+                  cout &lt;&lt; 123 &lt;&lt; endl;
+                
+                  return 0;
+                }
+                
+               4 write a cpp program to copy the contents of file to another.
+                
+                &lt;#include&lt;iostream&gt;
+                &lt;#include&lt;fstream&gt;
+                
+                using namespace std;
+                int main()
+                {
+                fstream source, dest;
+                char sfile [15], dfile[15];
+                char ch;
+                
+                cout&lt;&lt;"Enter the source file name"&lt;&lt;endl;
+                cin&gt;&gt;sfile;
+                source.open(sfile,ios::in);
+                cout&lt;&lt;"Enter the destination file name"&lt;&lt;endl;
+                cin&gt;&gt;dfile;
+                dest.open(dfile,ios::out);
+                while(source.eof()==0)
+                {
+                source.get(ch);
+                dest.put(ch);
+                }
+                source.close();
+                dest.close();
+                }
+
+           </CODE></PRE>
         </section>
         <!-- Add more sections as needed -->
 
